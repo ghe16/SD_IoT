@@ -1,12 +1,12 @@
+#from datasets.utils.logging import disable_progress_bar
+from torch.utils.data import Dataset, DataLoader
 
 from flwr_datasets import FederatedDataset 
 import torchvision.transforms as transforms 
-from torch.utils.data import Dataset, DataLoader
 
 
-def load_datasets(dataset_,NUM_OF_CLIENTS):
-    fds = FederatedDataset(dataset=dataset_, partitioners={"train":NUM_OF_CLIENTS})
-
+def load_datasets(dataset_,NUM_OF_CLIENTS,BATCH_SIZE):
+    fds = FederatedDataset(dataset="cifar10", partitioners={"train":NUM_OF_CLIENTS})
     def apply_transforms(batch):
         # Instead of passing transforms to dataset_(..., transform=transform)
         # we will use this function to dataset.with_transform(apply_transforms)
@@ -36,4 +36,4 @@ def load_datasets(dataset_,NUM_OF_CLIENTS):
         valloaders.append(DataLoader(partition["test"],batch_size=BATCH_SIZE))
     testset = fds.load_split("test").with_transform(apply_transforms)
     testloader = DataLoader(testset, batch_size=BATCH_SIZE)
-    return trainloaders, valloaders, testloader, 
+    return trainloaders, valloaders, testloader

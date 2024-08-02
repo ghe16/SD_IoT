@@ -1,0 +1,6 @@
+flwr==1.9.0
+flwr-datasets==0.2.0
+matplotlib==3.9.1
+torch
+torchvision
+numpy
