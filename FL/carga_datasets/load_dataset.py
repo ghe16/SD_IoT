@@ -5,7 +5,7 @@ from flwr_datasets import FederatedDataset
 import torchvision.transforms as transforms 
 
 
-def load_datasets(dataset_,NUM_OF_CLIENTS,BATCH_SIZE):
+def load_datasets(dataset_: str,NUM_OF_CLIENTS: dict,BATCH_SIZE: int):
     fds = FederatedDataset(dataset="cifar10", partitioners={"train":NUM_OF_CLIENTS})
     def apply_transforms(batch):
         # Instead of passing transforms to dataset_(..., transform=transform)
