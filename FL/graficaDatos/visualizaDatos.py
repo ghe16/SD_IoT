@@ -1,8 +1,6 @@
 import matplotlib.pyplot as plt
 
 
-
-
 #visualization of samples for node 0 
 def visualizaDatos(datos_list: list,nodo: int):
     batch = next(iter(datos_list[nodo]))
