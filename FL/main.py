@@ -8,8 +8,8 @@ from torch.utils.data import Dataset, DataLoader
 import flwr as fl
 import flwr
 
-from flwr.client import Client, ClientApp, NumPyClient
-from flwr.server import ServerApp, ServerConfig, ServerAppComponents
+from flwr.client import Client, ClientApp, NumPyClient 
+from flwr.server import ServerApp, ServerConfig, ServerAppComponents, ClientManager
 from flwr.simulation import run_simulation
 
 
@@ -17,7 +17,7 @@ from carga_datasets.load_dataset import load_datasets
 from graficaDatos.visualizaDatos import visualizaDatos
 import  creaRedNeuronal.RN  as RN
 
-NUM_OF_CLIENTS = 10
+NUM_OF_CLIENTS = 3
 BATCH_SIZE = 32 
 dataset_ ="cifar10"
 trainloaders = []
