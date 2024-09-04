@@ -1,0 +1,950 @@
+[
+    {
+        "id": "3f03f3b39648fe0a",
+        "type": "tab",
+        "label": "MQTT To Dashboard",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "f194667f338f15ad",
+        "type": "tab",
+        "label": "MBTA To MQTT",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "711b8a6f.aefffc",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "e61383.ba5fec8",
+        "type": "ui_group",
+        "name": "Mapa",
+        "tab": "bbfc5d69e6446464",
+        "order": 1,
+        "disp": true,
+        "width": "16",
+        "collapse": false
+    },
+    {
+        "id": "cbfa37ae.4f8988",
+        "type": "ui_tab",
+        "name": "Smart Home",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "4aec5604.0d92e8",
+        "type": "ui_group",
+        "name": "Control",
+        "tab": "cbfa37ae.4f8988",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "19d5c24.9d2863e",
+        "type": "ui_group",
+        "name": "Display",
+        "tab": "cbfa37ae.4f8988",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "326ca7b6.517388",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "c7f164fa.c2d8f8",
+        "type": "ui_group",
+        "name": "Display",
+        "tab": "75ba103d.716518",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b9aa0349.fe197",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "75ba103d.716518",
+        "type": "ui_tab",
+        "name": "MyMobile",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "29ba0f3d.b78698",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mqtt://mqtt.hsl.fi:1883",
+        "port": "8883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "bbfc5d69e6446464",
+        "type": "ui_tab",
+        "name": "Mapa",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "88d52853b3941923",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1885",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "38079cd06aec48a3",
+        "type": "ui_group",
+        "name": "Alertas",
+        "tab": "bbfc5d69e6446464",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e71f263d5b29e990",
+        "type": "function",
+        "z": "3f03f3b39648fe0a",
+        "name": "ContextMap",
+        "func": "var map = flow.get(\"map\") || {};\n\nlet data = msg.payload\n\nlet object = map[data.name] || {\"icon\": \"bus\", \"bearing\": 90}\n\nObject.assign(object, data);\n\nmap[data.name] = object\nflow.set(\"map\", map);\n\nmsg.payload = object\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 180,
+        "wires": [
+            [
+                "88090aeef046c855"
+            ]
+        ]
+    },
+    {
+        "id": "4b83d167137800c8",
+        "type": "mqtt in",
+        "z": "3f03f3b39648fe0a",
+        "name": "",
+        "topic": "transport/bus/+/latitude",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "b9aa0349.fe197",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 260,
+        "y": 140,
+        "wires": [
+            [
+                "b2fab7ad090c93a2"
+            ]
+        ]
+    },
+    {
+        "id": "b2fab7ad090c93a2",
+        "type": "function",
+        "z": "3f03f3b39648fe0a",
+        "name": "MQTT To Object",
+        "func": "let arr = msg.topic.split('/')\nlet line = arr[2]\nlet property = arr[3]\nlet value = msg.payload\n\nlet object = {}\n\nobject.name = line\nobject[property] = value\n\nmsg.payload = object\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 180,
+        "wires": [
+            [
+                "e71f263d5b29e990"
+            ]
+        ]
+    },
+    {
+        "id": "a3bdb7a09bf037d2",
+        "type": "mqtt in",
+        "z": "3f03f3b39648fe0a",
+        "name": "",
+        "topic": "transport/bus/+/longitude",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "b9aa0349.fe197",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 270,
+        "y": 220,
+        "wires": [
+            [
+                "b2fab7ad090c93a2"
+            ]
+        ]
+    },
+    {
+        "id": "88090aeef046c855",
+        "type": "function",
+        "z": "3f03f3b39648fe0a",
+        "name": "calcLabel",
+        "func": "let obj = msg.payload\nlet passengers = obj.occupancy_status || 'NO_DATA_AVAILABLE'\n\nlet dict = {\n    'EMPTY' : '0%',\n    'MANY_SEATS_AVAILABLE': '20%',\n    'FEW_SEATS_AVAILABLE': '80%',\n    'STANDING_ROOM_ONLY': '90%',\n    'CRUSHED_STANDING_ROOM_ONLY': '99%',\n    'FULL': '100%',\n    'NOT_ACCEPTING_PASSENGERS' : '100%',\n    'NO_DATA_AVAILABLE': '❔',\n    'NOT_BOARDABLE': '❌',\n}\n\npassengers = dict[passengers]\n\nobj.label = obj.name + ' | 🧍' + passengers\nmsg.payload = obj\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 180,
+        "wires": [
+            [
+                "eee3ca096f518dea"
+            ]
+        ]
+    },
+    {
+        "id": "eee3ca096f518dea",
+        "type": "ui_worldmap",
+        "z": "3f03f3b39648fe0a",
+        "group": "e61383.ba5fec8",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "lat": "42.34941916804064",
+        "lon": "-71.06411741002454",
+        "zoom": "15",
+        "layer": "OSMG",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "hide",
+        "layers": "hide",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "true",
+        "coords": "none",
+        "showgrid": "false",
+        "showruler": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,HM",
+        "maplist": "OSMG,OSMC,EsriC,EsriS,EsriT,EsriDG,UKOS",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 1180,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "69fd83966f2daa3b",
+        "type": "mqtt in",
+        "z": "3f03f3b39648fe0a",
+        "name": "",
+        "topic": "transport/bus/+/occupancy_status",
+        "qos": "1",
+        "datatype": "auto-detect",
+        "broker": "b9aa0349.fe197",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 290,
+        "y": 280,
+        "wires": [
+            [
+                "b2fab7ad090c93a2"
+            ]
+        ]
+    },
+    {
+        "id": "1f481a4f49e7f457",
+        "type": "mqtt in",
+        "z": "3f03f3b39648fe0a",
+        "name": "",
+        "topic": "transport/alert/+/+/",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "b9aa0349.fe197",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 250,
+        "y": 360,
+        "wires": [
+            [
+                "73944edf57f8ad05"
+            ]
+        ]
+    },
+    {
+        "id": "73944edf57f8ad05",
+        "type": "function",
+        "z": "3f03f3b39648fe0a",
+        "name": "MQTT To Object",
+        "func": "let arr = msg.topic.split('/')\nlet effect = arr[2]\nlet id = arr[3]\nlet value = msg.payload\n\nlet object = {}\n\nobject.id = id\nobject.effect = effect\nobject.value = value\nmsg.payload = object\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 360,
+        "wires": [
+            [
+                "a1618a12ae9dc92f"
+            ]
+        ]
+    },
+    {
+        "id": "a1618a12ae9dc92f",
+        "type": "function",
+        "z": "3f03f3b39648fe0a",
+        "name": "ContextMap",
+        "func": "var map = flow.get(\"alerts\") || {};\n\nlet data = msg.payload\n\nlet object = map[data.effect] ||  {}\n\nobject[data.id] = data.value\n\nmap[data.effect] = object\nflow.set(\"alerts\", map);\n\nmsg.payload = object\nmsg.topic = data.effect\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 630,
+        "y": 360,
+        "wires": [
+            [
+                "75ada15707dedf4d"
+            ]
+        ]
+    },
+    {
+        "id": "260359a352255848",
+        "type": "function",
+        "z": "3f03f3b39648fe0a",
+        "name": "ListToStr",
+        "func": "let data = msg.payload\n\nlet string = ''\nfor (let alert in data)\n    string += '<li>' + data[alert] + '</li><hr>'\n\nmsg.payload = string\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1040,
+        "y": 500,
+        "wires": [
+            [
+                "83f3062fb93262dd"
+            ]
+        ]
+    },
+    {
+        "id": "83f3062fb93262dd",
+        "type": "ui_template",
+        "z": "3f03f3b39648fe0a",
+        "group": "38079cd06aec48a3",
+        "name": "text",
+        "order": 1,
+        "width": "6",
+        "height": "10",
+        "format": "<ul ng-bind-html=\"msg.payload\"></ul>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1190,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4e24f7f47abb0079",
+        "type": "ui_dropdown",
+        "z": "3f03f3b39648fe0a",
+        "name": "alert_selector",
+        "label": "",
+        "tooltip": "",
+        "place": "Tipo de alerta",
+        "group": "38079cd06aec48a3",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Retrasos",
+                "value": "DELAY",
+                "type": "str"
+            },
+            {
+                "label": "Sin servicio",
+                "value": "NO_SERVICE",
+                "type": "str"
+            },
+            {
+                "label": "Desconocido",
+                "value": "UNKNOWN_EFFECT",
+                "type": "str"
+            },
+            {
+                "label": "Servicio modificado",
+                "value": "SERVICE_CHANGE",
+                "type": "str"
+            },
+            {
+                "label": "Cancelado",
+                "value": "CANCELLATION",
+                "type": "str"
+            },
+            {
+                "label": "Suspendido",
+                "value": "SUSPENSION",
+                "type": "str"
+            },
+            {
+                "label": "Problema Estación",
+                "value": "STATION_ISSUE",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 240,
+        "y": 500,
+        "wires": [
+            [
+                "16b04cfefb1e2d84"
+            ]
+        ]
+    },
+    {
+        "id": "16b04cfefb1e2d84",
+        "type": "function",
+        "z": "3f03f3b39648fe0a",
+        "name": "SetCurrent_alert",
+        "func": "let effect = msg.payload\nflow.set(\"current_alert\", effect);\n\nlet map = flow.get(\"alerts\")\nlet object = map[effect] ||  {}\n\nmsg.payload = object\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 500,
+        "wires": [
+            [
+                "260359a352255848"
+            ]
+        ]
+    },
+    {
+        "id": "75ada15707dedf4d",
+        "type": "switch",
+        "z": "3f03f3b39648fe0a",
+        "name": "If effect == current",
+        "property": "current_alert",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "topic",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 830,
+        "y": 360,
+        "wires": [
+            [
+                "260359a352255848"
+            ]
+        ]
+    },
+    {
+        "id": "e17890eda1f4858b",
+        "type": "http request",
+        "z": "f194667f338f15ad",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": false,
+        "url": "https://api-v3.mbta.com/vehicles",
+        "tls": "",
+        "proxy": "",
+        "authType": "",
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "cba0a3f216074681"
+            ]
+        ]
+    },
+    {
+        "id": "43ca5e7c77c29a20",
+        "type": "inject",
+        "z": "f194667f338f15ad",
+        "name": "Repeat 20 seconds",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "20",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 340,
+        "wires": [
+            [
+                "e17890eda1f4858b"
+            ]
+        ]
+    },
+    {
+        "id": "2c0df4bccb8c3828",
+        "type": "split",
+        "z": "f194667f338f15ad",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 870,
+        "y": 340,
+        "wires": [
+            [
+                "edc80fe1f635186e"
+            ]
+        ]
+    },
+    {
+        "id": "0ff17d3bc67623f0",
+        "type": "function",
+        "z": "f194667f338f15ad",
+        "name": "ExtractData",
+        "func": "let datos = msg.payload\nlet arr = []\n\n\nfor (let property in datos.data) {\n  arr.push({\n      label: datos.data[property].attributes.label,\n      latitude: datos.data[property].attributes.latitude,\n      longitude: datos.data[property].attributes.longitude,\n      occupancy_status: datos.data[property].attributes.occupancy_status\n      })\n}\n\n\nmsg.payload = arr\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 340,
+        "wires": [
+            [
+                "2c0df4bccb8c3828"
+            ]
+        ]
+    },
+    {
+        "id": "cba0a3f216074681",
+        "type": "json",
+        "z": "f194667f338f15ad",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 340,
+        "wires": [
+            [
+                "0ff17d3bc67623f0"
+            ]
+        ]
+    },
+    {
+        "id": "edc80fe1f635186e",
+        "type": "function",
+        "z": "f194667f338f15ad",
+        "name": "DividePayloadTopic",
+        "func": "let datos = msg.payload\nlet datos2 = {\n    latitude: datos.latitude,\n    longitude: datos.longitude,\n    occupancy_status: datos.occupancy_status\n}\n\nmsg.payload = \"25\"\nmsg.topic = \"transport/bus\" \n\n\nlet msgs = []\n\nfor (const [key, value] of Object.entries(datos2)) {\n    let object = {}\n    object.topic = \"transport/bus/\" + datos.label + \"/\" + key\n    object.payload = value\n    msgs.push(object)\n}\n\n//msg.payload = msgs\nreturn msgs;",
+        "outputs": 3,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 340,
+        "wires": [
+            [
+                "b076f59604d782aa"
+            ],
+            [
+                "b076f59604d782aa"
+            ],
+            [
+                "c494539154e14be3"
+            ]
+        ]
+    },
+    {
+        "id": "4259e9e94ec0477e",
+        "type": "inject",
+        "z": "f194667f338f15ad",
+        "name": "Repeat 3 minutes",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "180",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "e823634a2d79b2e0"
+            ]
+        ]
+    },
+    {
+        "id": "e823634a2d79b2e0",
+        "type": "http request",
+        "z": "f194667f338f15ad",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api-v3.mbta.com/alerts",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 370,
+        "y": 220,
+        "wires": [
+            [
+                "93ff6bccdb9eb091"
+            ]
+        ]
+    },
+    {
+        "id": "93ff6bccdb9eb091",
+        "type": "json",
+        "z": "f194667f338f15ad",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 220,
+        "wires": [
+            [
+                "14fed11c6968456e"
+            ]
+        ]
+    },
+    {
+        "id": "14fed11c6968456e",
+        "type": "function",
+        "z": "f194667f338f15ad",
+        "name": "ExtractData",
+        "func": "let datos = msg.payload\nlet arr = []\n\n\nfor (let property in datos.data) {\n  arr.push({\n      effect: datos.data[property].attributes.effect,\n      header: datos.data[property].attributes.header,\n      id: datos.data[property].id,\n      })\n}\n\n\nmsg.payload = arr\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 220,
+        "wires": [
+            [
+                "d107124fc31d9058"
+            ]
+        ]
+    },
+    {
+        "id": "d107124fc31d9058",
+        "type": "split",
+        "z": "f194667f338f15ad",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 870,
+        "y": 220,
+        "wires": [
+            [
+                "cbb57ed5d4c4c542"
+            ]
+        ]
+    },
+    {
+        "id": "cbb57ed5d4c4c542",
+        "type": "function",
+        "z": "f194667f338f15ad",
+        "name": "DividePayloadTopic",
+        "func": "let datos = msg.payload\nlet object = {}\nobject.topic = \"transport/alert/\" + datos.effect + \"/\" + datos.id + \"/\"\nobject.payload = datos.header\nreturn object;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1070,
+        "y": 220,
+        "wires": [
+            [
+                "f3fff15e775f67c5"
+            ]
+        ]
+    },
+    {
+        "id": "f3fff15e775f67c5",
+        "type": "mqtt out",
+        "z": "f194667f338f15ad",
+        "name": "QoS 2",
+        "topic": "",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b9aa0349.fe197",
+        "x": 1290,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b076f59604d782aa",
+        "type": "mqtt out",
+        "z": "f194667f338f15ad",
+        "name": "QoS 0",
+        "topic": "",
+        "qos": "0",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b9aa0349.fe197",
+        "x": 1290,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "c494539154e14be3",
+        "type": "mqtt out",
+        "z": "f194667f338f15ad",
+        "name": "QoS 1",
+        "topic": "",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b9aa0349.fe197",
+        "x": 1290,
+        "y": 380,
+        "wires": []
+    }
+]

@@ -1,0 +1,179 @@
+[
+    {
+        "id": "6359f00de5c98501",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3e1ce335c77edc52",
+        "type": "kafka-broker",
+        "name": "Kafka_local",
+        "hosts": "localhost:9092",
+        "selfsign": false,
+        "usetls": false,
+        "cacert": "",
+        "clientcert": "",
+        "privatekey": "",
+        "passphrase": ""
+    },
+    {
+        "id": "d5886a5e74e32eff",
+        "type": "http request",
+        "z": "6359f00de5c98501",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://en.wikipedia.org/w/api.php?format=json&rcprop=title|ids|sizes|flags|user&list=recentchanges&action=query",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 290,
+        "y": 100,
+        "wires": [
+            [
+                "1abd36d84a08f38a"
+            ]
+        ]
+    },
+    {
+        "id": "1abd36d84a08f38a",
+        "type": "kafka-producer",
+        "z": "6359f00de5c98501",
+        "name": "",
+        "broker": "3e1ce335c77edc52",
+        "topic": "topic",
+        "requireAcks": 1,
+        "ackTimeoutMs": 100,
+        "attributes": 0,
+        "x": 460,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e841a60ac2e5da8b",
+        "type": "kafka-consumer",
+        "z": "6359f00de5c98501",
+        "name": "",
+        "broker": "3e1ce335c77edc52",
+        "outOfRangeOffset": "earliest",
+        "fromOffset": "latest",
+        "topic": "topic",
+        "groupid": "",
+        "x": 140,
+        "y": 240,
+        "wires": [
+            [
+                "d9fd3e3de4323bf2"
+            ]
+        ]
+    },
+    {
+        "id": "d9fd3e3de4323bf2",
+        "type": "function",
+        "z": "6359f00de5c98501",
+        "name": "Kafka_Extraction",
+        "func": "let datos = msg.payload\nmsg.payload = datos.value\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 350,
+        "y": 240,
+        "wires": [
+            [
+                "e0d1f8db5992c0ae"
+            ]
+        ]
+    },
+    {
+        "id": "e0d1f8db5992c0ae",
+        "type": "json",
+        "z": "6359f00de5c98501",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 240,
+        "wires": [
+            [
+                "f75ea58bf42d9a2d"
+            ]
+        ]
+    },
+    {
+        "id": "f75ea58bf42d9a2d",
+        "type": "function",
+        "z": "6359f00de5c98501",
+        "name": "function 1",
+        "func": "let datos = msg.payload\nlet arr = []\nfor (let property in datos.query.recentchanges) {\n  arr.push({\n      type: datos.query.recentchanges[property].type,\n      pageid: datos.query.recentchanges[property].pageid,\n      revid: datos.query.recentchanges[property].revid,\n      })\n}\nmsg.payload = arr\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 240,
+        "wires": [
+            [
+                "1c52f6187df92576"
+            ]
+        ]
+    },
+    {
+        "id": "1c52f6187df92576",
+        "type": "debug",
+        "z": "6359f00de5c98501",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "7a67ac20980dfd52",
+        "type": "inject",
+        "z": "6359f00de5c98501",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "10",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "d5886a5e74e32eff"
+            ]
+        ]
+    }
+]
