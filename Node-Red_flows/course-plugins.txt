@@ -1,0 +1,5 @@
+node-red-dashboard
+node-red-contrib-aedes
+node-red-contrib-web-worldmap
+node-red-contrib-kafka-client
+node-red-node-ui-table
