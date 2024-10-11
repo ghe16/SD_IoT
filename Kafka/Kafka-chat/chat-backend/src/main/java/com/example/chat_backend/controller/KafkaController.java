@@ -31,15 +31,15 @@ public class KafkaController {
     // endpoint to get all topics. 
     @GetMapping("/topics")
     public Set<String> getAllTopics() throws ExecutionException, InterruptedException {
-        return kafkaTopicService.getAllTopics();
+    // TODO:  Return the topics
     }
 
 
     // endpoint to create a new topic
     @PostMapping("/create-topic")
     public String createTopic(@RequestBody CreateTopicsRequest request) {
-        kafkaTopicService.createTopic(request.getTopicName());
-        return "Topiccreated" + request.getTopicName();
+        //TODO: create a topic and return it. 
+        
     }
     
     // Class for the creation of the topic
@@ -58,10 +58,7 @@ public class KafkaController {
     //Endpoint to sned messages to a topic
     @PostMapping("/send-message")    
     public String sendMessage(@RequestBody SendMessageRequest request)  {
-        kafkaMessageService.sendMessage(request.getTopic(), request.getUsername(), request.getMessage());
-        //public String sendMessage(@RequestParam String topic, @RequestBody SendMessageRequest request)  {
-    //    kafkaMessageService.sendMessage(topic, request.getUsername(), request.getMessage());
-        return "Message sent to topic: " + request.getTopic();
+        //TODO: to send the message to kafka to create a topic and return it
     }
 
     //class for the send Medsage Request
@@ -102,11 +99,11 @@ public class KafkaController {
     @PostMapping("/change-topic/{topic}")
     public String changeTopic(@PathVariable String topic) {
         kafkaMessageService.clearMessages();  // Limpiar los mensajes anteriores
-        kafkaMessageService.updateConsumer(topic);  // Actualizar el consumidor con el nuevo tópico
+        kafkaMessageService.updateConsumer(topic);  // Actualizar el consumidor con el nuevo tpico
         return "Tópico cambiado a: " + topic;
     }
 
-    // Endpoint para obtener los mensajes del tópico actual
+    // Endpoint para obtener los mensajes del topico actual
     @GetMapping("/messages")
     public List<String> getMessages() {
         return kafkaMessageService.getAllMessages();

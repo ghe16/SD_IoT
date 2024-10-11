@@ -20,27 +20,14 @@ public class KafkaTopicService {
 
     //methdo to obtain all kafaka topics
     public Set<String> getAllTopics() throws ExecutionException, InterruptedException{
-        Properties props = new Properties();
-        props.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-
-        try (AdminClient client = AdminClient.create(props)) {
-            return client.listTopics().names().get();
-        }
+        //TODO: 
+        // Create properties, put the setup and listTopics
+        
     }
 
     //method to create a new kafka topic
-
-    // public void createTopic(String topicName, int partitions, short replicationFactor)  {
     public void createTopic(String topicName){
-        Properties props = new Properties();
-        props.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServer);
-
-        try(AdminClient client = AdminClient.create(props))  {
-            //NewTopic newTopic = new NewTopic(topicName, partitions, replicationFactor);
-            NewTopic newTopic = new NewTopic(topicName, 1, (short) 1);
-            Set<NewTopic> newTopics = Collections.singleton(newTopic);
-            client.createTopics(newTopics);
-        }
-
+        // Create properties, put the setup and create NewTopic
+        
     }
 } 

@@ -88,7 +88,7 @@ public class KafkaMessageService {
         }
     }
 
-    // Método para limpiar la lista de mensajes cuando se cambia el tópico
+    // Método para limpiar la lista de mensajes cuando se cambia el topico
     public synchronized void clearMessages() {
         synchronized (messageQueue) {  // Sincronizar el acceso a la cola de mensajes
             messageQueue.clear();
@@ -99,8 +99,8 @@ public class KafkaMessageService {
 
     //Send a message to a kafka topic
     public void sendMessage(String topic,String username, String message){
-        String keyValueMessage =  "{\"username\":\"" + username + "\", \"message\":\"" + message + "\"}";  
-        kafkaTemplate.send(topic, keyValueMessage);
+        // TODO: develop the method to send a kafka message in a topic in a json file with this format: "{\"username\":\"" + username + "\", \"message\":\"" + message + "\"}" 
+        
     }
 
 
