@@ -1,72 +1,55 @@
-package com.kafka.example;
+package kafka.example1;
 
-import java.time.Duration;
-import java.util.Arrays;
 import java.util.Properties;
-import java.util.UUID;
 
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
 
-public class SimpleConsumer {
+public class SimpleProducer {
 
-    public static void main(String[] args) {    
-        // a client that consumes records from the kafka cluster using TCP connections.
-        // KAfka service transparently handles the failure of kafka brokers and partition topic migration
+	Properties props; // The producer is a Kafka client that publishes records to the Kafka cluster.
 
-        //********************************************************
-        // 1 KAFKA Consumer client configuration
-        //************************************************
+	KafkaProducer<String, String> producer;
+	
+//****************************************************************
+// 1.KAFKA PRODUCER CONFIGURATION 
+//****************************************************************
+	SimpleProducer() {
+		
+		Properties props = new Properties();
+		props.put("bootstrap.servers", "localhost:9092");
+		props.put("acks", "all");
+		// Serializer for conversion the key type to bytes
+		props.put("key.serializer",
+				"org.apache.kafka.common.serialization.StringSerializer");
+		// Serializer for conversion the value type to bytes
+		props.put("value.serializer",
+				"org.apache.kafka.common.serialization.StringSerializer");
 
-        Properties consumerConfig;
-        KafkaConsumer < String, String > consumer;
+		producer = new KafkaProducer<String, String>(props);
+	}
+	
+//****************************************************************
+//2. TOPIC PRODUCTION
+//****************************************************************	
+	void produceAndPrint() {
+		for (int i = 0; i < 200; i++)
+			// Fire-and-forget send(topic, key, value)
+			// Send adds records to unsent records buffer and return
+			producer.send(new ProducerRecord<String, String>("DS", Integer
+					.toString(i), Integer.toString(i)));
 
-        // Configuration of the Kafka consumer properties
+	}
 
-        consumerConfig = new Properties();
-        consumerConfig.setProperty(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        // First, a know group to keep track of the records in the kafka cluster 
-        //consumerConfig.setProperty(ConsumerConfig.GROUP_ID_CONFIG, "GRUPO1");
-        
-        //But, we need to use a random group for consuming the records in the diverse executions
-        consumerConfig.setProperty(ConsumerConfig.GROUP_ID_CONFIG, UUID.randomUUID().toString());
-        consumerConfig.setProperty(ConsumerConfig.AUTO_OFFSET_CONFIG,"earliest");
+	void stop() {
+		producer.close();
+	}
 
-        //if the information is coming serilized, then we need to undo it
-        consumerConfig.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
-        consumerConfig.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, "org.apache.kafka.common.serialization.StringDeserializer");
+	public static void main(String[] args) {
+		//System.setProperty("kafka.logs.dir", "/home/isabel/kafka/logs");
+		SimpleProducer myProducer = new SimpleProducer();
+		myProducer.produceAndPrint();
+		myProducer.stop();
 
-        // props.setProperty("auto.commit.interval.ms","1000");
-
-        //Configuration of the System's properties
-        System.getProperty("kafka.logs.dir", "/tmp/kafka-logs");
-        System.getProperties().list(System.out);
-        
-        //********************************************************
-        // 2 KAFKA Consumer client creation and topic subscriptions
-        //************************************************
-
-        consumer = new KafkaConsumer<String,String>(consumerConfig);
-        consumer.subscribe(Arrays.asList("DS"));
-
-        //********************************************************
-        // 3 Topic consumption
-        //************************************************
-
-        System.out.prinln("Starting the kafka client %n");
-        // loop forever to be consuming messages from the cluster
-        while(true) {
-            ConsumerRecords<String,String> records = consumer.poll(Duration.ofMillis(100));
-
-            for (ConsumerRecord<String,String> record : records) {
-                System.out.println("Something consumed");
-                System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
-            }
-        }
-        consumer.close();
-    
-    }
+	}
 }
-
