@@ -28,7 +28,7 @@ const App = () => {
     setIsPolling(true);  // Iniciar el polling cuando se selecciona un tópico
 
     try {
-      await axios.post(`/api/change-topic/${topic}`);
+      await axios.post('/api/change-topic/${topic}');
     } catch (error) {
       console.error('Error al cambiar el tópico', error);
     }

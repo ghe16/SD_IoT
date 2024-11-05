@@ -15,7 +15,7 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class KafkaTopicService {
 
-    private final String bootstrapServer = "138.100.154.74:9092";
+    private final String bootstrapServer = "localhost:9092";
 
 
     //methdo to obtain all kafaka topics
